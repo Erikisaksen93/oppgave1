@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.11.3.css">
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.11.3.js"></script>
+    <script src="./script.js"></script>
+
+    <script>
+        QUnit.test("Sjekk 29.februar 2020(skuddår) - 29.02.2020", function (assert) {
+            let actual = isDateValid("29.02.2020");
+            let expected = true;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk lengde - 31.01.20201", function (assert) {
+            let actual = isDateValid("31.01.20201");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk punktum - 31.022.020", function (assert) {
+            let actual = isDateValid("31.022.020");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk år - 31.01.20", function (assert) {
+            let actual = isDateValid("31.01.20");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk to siffer måned - 29.1.2020", function (assert) {
+            let actual = isDateValid("29.1.2020");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk måned utenfor 12 - 15.13.1980", function (assert) {
+            let actual = isDateValid("15.13.1980");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk dag større enn 31 - 45.11.2001", function (assert) {
+            let actual = isDateValid("45.11.2001");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk dag er 31 for måned som ikke har 31 dager - 31.06.2003", function (assert) {
+            let actual = isDateValid("31.06.2001");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk dag 30 og måned februar - 30.02.2020", function (assert) {
+            let actual = isDateValid("30.02.2020");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Sjekk dag=29 && måned=feb && ikke skuddår - 29.02.2021", function (assert) {
+            let actual = isDateValid("29.02.2021");
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+
+        
+
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
